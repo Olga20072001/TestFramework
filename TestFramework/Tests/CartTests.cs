@@ -1,48 +1,52 @@
-﻿using NUnit.Framework;
+﻿using NUnit.Allure.Attributes;
+using NUnit.Allure.Core;
+using NUnit.Framework;
 using static TestFramework.PageObjects.PageManager;
 
 namespace TestFramework.Tests
 {
+    [AllureNUnit]
     [TestFixture]
+    [AllureSuite("CartPageTests")]
+    [AllureEpic("Shop tests")]
     public class CartTests : BaseTest
     {
-        string keyword = "Iphone";
-        string cartTitle = "ваш кошик товарів";
-        string emptyCartMessage = "Ваш кошик порожній.";
-
         [Test]
+        [AllureTag("Smoke")]
         public void AddProductToCart()
         {
             homePage.GoTo(baseUrl)
                 .SearchByKeyword(keyword)
-                .getItemByIndex(0)
-                .pressBuyButton();
+                .GetItemByIndex(0)
+                .PressBuyButton();
 
             Assert.Multiple(() =>
             {
-                Assert.That(cartPage.getCartTitle().ToLower(), Is.EqualTo(cartTitle));
-                Assert.That(cartPage.getItemsCountInCart(), Is.EqualTo(1), "Number of items of the product is not 1");
+                Assert.That(cartPage.GetCartTitle().ToLower(), Is.EqualTo(cartTitle));
+                Assert.That(cartPage.GetItemsCountInCart(), Is.EqualTo(1), "Number of items of the product is not 1");
             });
         }
 
         [Test]
+        [AllureTag("Smoke")]
         public void AddProductsOnThePageToCart()
         {
             homePage.GoTo(baseUrl)
                 .SearchByKeyword(keyword)
-                .addItemsToCart(5);
-            Assert.That(cartPage.getItemsCountInCart(), Is.EqualTo(5));
+                .AddItemsToCart(5);
+            Assert.That(cartPage.GetItemsCountInCart(), Is.EqualTo(5));
         }
 
         [Test]
+        [AllureTag("Smoke")]
         public void DeleteProductFromCart()
         {
             homePage.GoTo(baseUrl)
                 .SearchByKeyword(keyword)
-                .getItemByIndex(0)
-                .pressBuyButton()
-                .deleteAllProductsFromCart();
-                Assert.That(cartPage.emptyCartMessageIsVisible(), Does.StartWith(emptyCartMessage));           
+                .GetItemByIndex(0)
+                .PressBuyButton()
+                .DeleteAllProductsFromCart();
+                Assert.That(cartPage.EmptyCartMessageIsVisible(), Does.StartWith(emptyCartMessage));           
         }
     }
 }

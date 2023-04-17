@@ -15,20 +15,21 @@ namespace TestFramework.PageObjects.Pages
         private IWebElement emptyCartMassage => LocateElement(LocatorType.Xpath, "//p[@class='basket-empty__message']");
         private IWebElement goToProductListBtn => LocateElement(LocatorType.Xpath, "//p[@class='basket-empty__message']//a");
         private IWebElement closeCartBth => LocateElement(LocatorType.Xpath, "//div[contains(@class,'cart-popup')]//button[@title='Close']");
+        private IWebElement makeAPurchaseBtn => LocateElement(LocatorType.Xpath, "//button[contains(@class,'purchase-btn')]");
 
-        public string getCartTitle()
+        public string GetCartTitle()
         {
             WaitForPageLoadingComplete(driver);
             ElementsIsPresent(driver, "//p[@class='headline headline--level2-bold basket__headline']");
             return GetText(cartTitle);
         }
-        public uint getItemsCountInCart()
+        public uint GetItemsCountInCart()
         {
             WaitForPageLoadingComplete(driver);
             ElementIsPresent(driver, "//div[@class='basket-products__group-item']");
             return (uint)cartItems.Count;
         }
-        public CartPage deleteAllProductsFromCart()
+        public CartPage DeleteAllProductsFromCart()
         {
             for(int i=0;i<cartItems.Count;i++)
             {
@@ -36,14 +37,18 @@ namespace TestFramework.PageObjects.Pages
             }
             return new CartPage(driver);
         }
-        public string emptyCartMessageIsVisible()
+        public string EmptyCartMessageIsVisible()
         {
             return GetText(emptyCartMassage);
         }
-        public SearchResultsPage closeCart()
+        public SearchResultsPage CloseCart()
         {
             ClickAndWaitForPageToLoad(driver, closeCartBth);
             return new SearchResultsPage(driver);
+        }
+        public void MakeAPurchase()
+        {
+            makeAPurchaseBtn.Click();
         }
 
     }

@@ -9,7 +9,7 @@ namespace TestFramework.PageObjects.Pages
         public ProductPage(IWebDriver driver) : base(driver) { }
 
         private IWebElement buyButton => LocateElement(LocatorType.Xpath, "//div[@class='p-buy']//button[contains(@class,'p-buy__btn')]");
-        public CartPage pressBuyButton()
+        public CartPage PressBuyButton()
         {
             WaitForPageLoadingComplete(driver);
             buyButton.Click();

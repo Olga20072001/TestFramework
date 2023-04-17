@@ -2,8 +2,6 @@
 using OpenQA.Selenium;
 
 using SeleniumExtras.WaitHelpers;
-using System.Threading;
-using OpenQA.Selenium.Support.Extensions;
 
 namespace TestFramework.Utilities
 {

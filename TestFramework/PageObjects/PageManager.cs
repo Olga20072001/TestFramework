@@ -23,7 +23,7 @@ namespace TestFramework.PageObjects
             searchResultsPage= new SearchResultsPage(driver);   
             productPage= new ProductPage(driver);   
             cartPage= new CartPage(driver);
-            loginPage= new LoginPage(driver);   
+            loginPage= new LoginPage(driver);
         }
 
     }

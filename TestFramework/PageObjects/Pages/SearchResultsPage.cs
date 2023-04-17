@@ -29,13 +29,13 @@ namespace TestFramework.PageObjects.Pages
             return this;
         }
 
-        public ProductPage getItemByIndex(int index)
+        public ProductPage GetItemByIndex(int index)
         {
             WaitForPageLoadingComplete(driver);
             itemsList.ElementAt(index).Click();
             return new ProductPage(driver);
         }
-        public SearchResultsPage addItemsToCart(int count)
+        public SearchResultsPage AddItemsToCart(int count)
         {
             if (count <= itemsList.Count)
             {
@@ -43,8 +43,8 @@ namespace TestFramework.PageObjects.Pages
                 {
                     WaitForPageLoadingComplete(driver);
                     buyBtnList.ElementAt(i).Click();
-                    cartPage.getCartTitle();
-                    cartPage.closeCart();
+                    cartPage.GetCartTitle();
+                    cartPage.CloseCart();
                 }
             }
             else

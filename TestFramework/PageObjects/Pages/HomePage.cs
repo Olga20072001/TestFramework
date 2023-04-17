@@ -10,7 +10,7 @@ namespace TestFramework.PageObjects.Pages
 
         private IWebElement searchField => LocateElement(LocatorType.Xpath, "//form[@data-is='Search']//input");
         private IWebElement searchButton => LocateElement(LocatorType.Xpath, "//form[@data-is='Search']//button");
-
+        private IWebElement loginButton => LocateElement(LocatorType.Xpath, "//button[contains(@title,\"Увійти\")]");
         public HomePage GoTo(string url)
         {
             WaitForPageLoadingComplete(driver);
@@ -22,6 +22,11 @@ namespace TestFramework.PageObjects.Pages
             searchField.SendKeys(text);
             searchButton.Click();
             return new SearchResultsPage(driver);
+        }
+        public LoginPage ClickLoginBtn()
+        {
+            loginButton.Click();
+            return new LoginPage(driver);
         }
 
 
