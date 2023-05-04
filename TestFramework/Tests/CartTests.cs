@@ -3,6 +3,7 @@ using NUnit.Allure.Core;
 using NUnit.Framework;
 using static TestFramework.PageObjects.PageManager;
 
+
 namespace TestFramework.Tests
 {
     [AllureNUnit]

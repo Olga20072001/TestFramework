@@ -1,5 +1,7 @@
 ﻿using Atata;
 using NUnit.Framework;
+using OpenQA.Selenium;
+using TestFramework.Drivers;
 using TestFramework.PageObjects.Pages;
 
 namespace TestFramework.Tests.SkyUpTests
@@ -7,12 +9,16 @@ namespace TestFramework.Tests.SkyUpTests
     [TestFixture]
     public class SkyUpBaseTest
     {
+        protected IWebDriver driver;
+        DriverManager driverManager;
         [OneTimeSetUp]
         public void GlobalSetUp()
         {
+            driverManager = DriverManagerFactory.GetManager(DriverType.REMOTEFIREFOX);
+            driver = driverManager.GetDriver();
+
             AtataContext.GlobalConfiguration
-                .UseChrome()
-                    .WithArguments("start-maximized")
+                .UseDriver(driver)
                 .UseBaseUrl("https://skyup.aero/en/")
                 .UseCulture("en-US")
                 .UseAllNUnitFeatures()
@@ -31,9 +37,9 @@ namespace TestFramework.Tests.SkyUpTests
                 .WithFileName(screenshotInfo => $"{screenshotInfo.Number:D2} - {screenshotInfo.PageObjectFullName}{screenshotInfo.Title?.Prepend(" - ")}")
                 .LogConsumers.AddNUnitTestContext()
                 .WithoutSectionFinish()
-                .WithMinLevel(LogLevel.Info)
+                .WithMinLevel(Atata.LogLevel.Info)
                 .LogConsumers.AddDebug()
-                .WithMinLevel(LogLevel.Debug)  
+                .WithMinLevel(Atata.LogLevel.Debug)  
                 .Build();
         }
         [TearDown]

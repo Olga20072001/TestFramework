@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace TestFramework.Drivers
 {
     public class DriverManagerFactory
@@ -15,6 +10,8 @@ namespace TestFramework.Drivers
                 DriverType.CHROME => new ChromeDriverManager(),
                 DriverType.FIREFOX => new FirefoxDriverManager(),
                 DriverType.EDGE => new EdgeDriverManager(),
+                DriverType.REMOTECHROME => new RemoteChromeDriverManager(),
+                DriverType.REMOTEFIREFOX => new RemoteFirefoxDriverManager(),
                 _ => new ChromeDriverManager(),
             };
             return driverManager;

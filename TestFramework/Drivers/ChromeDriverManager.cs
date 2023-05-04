@@ -38,6 +38,7 @@ namespace TestFramework.Drivers
             {
                 "start-maximized",
                 "ignore-certificate-errors",
+                "--disable-dev-shm-usage",
             };
 
             _chromeOptions.AddArguments(arguments);

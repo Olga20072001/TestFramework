@@ -13,6 +13,7 @@ namespace TestFramework.Drivers
 
         public void QuitDriver()
         {
+            StopService();
             if (driver != null)
             {
                 driver.Quit();
@@ -28,6 +29,8 @@ namespace TestFramework.Drivers
                 CreateDriver();
             }
             return driver;
+            //CreateDriver();
+            //return driver;
         }
     }
 }

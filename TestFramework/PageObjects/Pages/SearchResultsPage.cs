@@ -39,7 +39,7 @@ namespace TestFramework.PageObjects.Pages
         {
             if (count <= itemsList.Count)
             {
-                for (int i = 0; i <= count; i++)
+                for (int i = 0; i < count; i++)
                 {
                     WaitForPageLoadingComplete(driver);
                     buyBtnList.ElementAt(i).Click();

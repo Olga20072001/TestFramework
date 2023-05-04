@@ -4,6 +4,8 @@
     {
         CHROME,
         FIREFOX,
-        EDGE
+        EDGE,
+        REMOTECHROME,
+        REMOTEFIREFOX
     }
 }

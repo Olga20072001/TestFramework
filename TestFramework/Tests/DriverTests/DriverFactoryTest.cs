@@ -5,20 +5,8 @@ using TestFramework.Drivers;
 namespace TestFramework.Tests.DriverTests
 {
     [TestFixture]
-    public class DriverFactoryTest
+    public class DriverFactoryTest: BaseTest
     {
-        DriverManager driverManager;
-        IWebDriver driver;
-
-        [OneTimeSetUp]
-        public void OneTimeSetUp()
-        {
-            driverManager = DriverManagerFactory.GetManager(DriverType.EDGE);
-            driver = driverManager.GetDriver();
-        }
-
-        [OneTimeTearDown]
-        public void OneTimeTearDown() => driverManager.QuitDriver();
 
         [Test]
         public void LaunchGoogleTest()
