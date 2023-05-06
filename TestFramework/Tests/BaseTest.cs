@@ -1,4 +1,5 @@
 ﻿using Allure.Commons;
+using Newtonsoft.Json;
 using NUnit.Allure.Core;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
